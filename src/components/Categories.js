@@ -25,7 +25,7 @@ export default class Categories extends Component {
                 <div key={category.id} className="card border-primary mb-3">
                 <div className="card-body">
               
-                 <Link to={'/' + category.slug}> <h4 className="card-title">{category.title}</h4></Link>
+                <h4 className="card-title">{category.title}</h4>
                
                   
                 </div>
