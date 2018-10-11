@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Categories from './Categories';
 export default class Post extends Component {
 
     state = {
@@ -15,14 +16,16 @@ export default class Post extends Component {
            this.setState({
                post:res.data.object
            })
-           console.log(res.data.object);
+                 
         })      
     }
-  render() {
     
+  render() {
+  
       const post = this.state.post ?
         (
          <div>
+            
               <h1>{this.state.post.title} </h1>
 
           <p >{this.state.post.content}</p>
