@@ -8,7 +8,7 @@ export default class Home extends Component {
         posts : []
     }
     componentDidMount() {
-        axios.get('https://api.cosmicjs.com/v1/907ba790-cd54-11e8-9b0c-89b3a877fc8b/objects?pretty=true&hide_metafields=true&type=posts')
+        axios.get('https://api.cosmicjs.com/v1/fina/objects?pretty=true&hide_metafields=true&type=posts')
          .then(res => {
              console.log(res.data.objects);
              this.setState({
@@ -29,7 +29,7 @@ export default class Home extends Component {
                   <p className="card-text">{post.content}</p>
                   
                 </div>
-                <img src={post.metadata.hero.imgix_url} alt=""/>
+                <img className="post-image" src={post.metadata.hero.imgix_url} alt=""/>
               </div>
             )
         })

@@ -10,7 +10,7 @@ export default class Post extends Component {
       
         let slug = this.props.location.pathname;
         console.log(slug);
-        axios.get(`https://api.cosmicjs.com/v1/907ba790-cd54-11e8-9b0c-89b3a877fc8b/object${slug}?pretty=true&hide_metafields=true`)
+        axios.get(`https://api.cosmicjs.com/v1/fina/object${slug}?pretty=true&hide_metafields=true`)
         .then( res => {
            this.setState({
                post:res.data.object
@@ -26,7 +26,7 @@ export default class Post extends Component {
               <h1>{this.state.post.title} </h1>
 
           <p >{this.state.post.content}</p>
-          <img  src={this.state.post.metadata.hero.url} alt=""/>
+          <img className="post-image" src={this.state.post.metadata.hero.url} alt=""/>
          </div>
         )
         :
