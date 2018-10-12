@@ -1,35 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import image from '../redux.png'
-export default class Home extends Component {
+import image from '../redux.png';
+import { connect } from 'react-redux';
 
-    state = {
-        posts : []
-    }
-    componentDidMount() {
-        axios.get('https://api.cosmicjs.com/v1/fina/objects?pretty=true&hide_metafields=true&type=posts')
-         .then(res => {
-             console.log(res.data.objects);
-             this.setState({
-                 posts: res.data.objects
-             })
-             
-         })
-    }
+class Home extends Component {
+
+
   render() {
-    const { posts } = this.state;
+      console.log(this.props);
+    const { posts } = this.props;
     const postList = posts.length ? (
         posts.map(post => {
             return(
                 <div key={post.id} className="card border-primary mb-3">
                 <div className="card-body">
-                <img src={image} alt="image"/>
-                 <Link to={'/' + post.slug}> <h4 className="card-title">{post.title}</h4></Link>
-                  <p className="card-text">{post.content}</p>
+                <img src={image} alt=""/>
+                 <Link to={'/' + post.id}> <h4 className="card-title">{post.title}</h4></Link>
+                  <p className="card-text">{post.body}</p>
                   
                 </div>
-                <img className="post-image" src={post.metadata.hero.imgix_url} alt=""/>
               </div>
             )
         })
@@ -47,3 +36,11 @@ export default class Home extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+     return {
+         posts: state.posts
+     }
+}
+
+export default connect(mapStateToProps)(Home);
